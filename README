@@ -1,16 +1,16 @@
-File-GetLineMaxLength version 0.01
+File-GetLineMaxLength version 1.01
 ==================================
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+File::GetLineMaxLength - Get lines from a file, up to a maximum line length
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+While generally reading lines of data is easy in perl (eg C<E<lt>$FhE<gt>>),
+there's apparently no easy way to limit the read line to a maximum length
+(as in the C call C<fgets(char *s, int size, FILE *stream)>). This can
+lead to potential DOS situations in your code where an attacker can send
+an arbitrarily large line and use up all your memory. Of course you can
+use things like BSD::Resource to stop your program using all memory,
+but that just kills off the process and gives you no more information
+about what was causing the problem.
 
 INSTALLATION
 
@@ -31,7 +31,7 @@ COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
-Copyright (C) 2004 by root
+Copyright (C) 2004-2007 by FastMail IP Partners
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.4 or,

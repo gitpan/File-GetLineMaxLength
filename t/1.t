@@ -3,7 +3,7 @@
 
 #########################
 
-use Test::More tests => 37 + 768 + 64;
+use Test::More tests => 39 + 768 + 64;
 BEGIN { use_ok('File::GetLineMaxLength') };
 use File::Temp qw(tempfile);
 
@@ -129,4 +129,10 @@ for (1 .. 64) {
 }
 $Line = $FGL->getline();
 ok($Line eq "", "basic 10.5");
+
+$FGL = newfile("a line with no EOL");
+$Line = $FGL->getline();
+ok($Line eq "a line with no EOL", "basic 11.1");
+$Line = $FGL->getline();
+ok($Line eq "", "basic 11.2");
 

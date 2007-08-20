@@ -70,7 +70,7 @@ So basically any "work" you do will probably easily swamp the read time
 =cut
 
 # Use modules {{{
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 use strict;
 # }}}
@@ -113,7 +113,7 @@ sub new {
 
 Get a line of data from the file handle, up to $max_length
 bytes long. If no $max_length passed, works just like
-standard perl <$fh>. If $was_long_line variable passed,
+standard perl <$fh>. If the $was_long_line variable is passed,
 it's set to 0 or 1 depending on whether the line was
 very long and has been truncated.
 
@@ -165,7 +165,7 @@ sub getline {
     defined($BytesRead) || die "getline failed: $!";
 
     # Reached EOF? Just return remnants from buffer
-    if ($BytesRead == 0 && length($$Buffer) == 0) {
+    if ($BytesRead == 0) {
       return substr($$Buffer, 0, length($$Buffer), '');
     }
 
@@ -195,7 +195,7 @@ Rob Mueller E<lt>cpan@robm.fastmail.fmE<gt>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2004 by FastMail IP Partners
+Copyright (C) 2004-2007 by FastMail IP Partners
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
